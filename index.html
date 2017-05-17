@@ -1,1 +1,45 @@
-<h1>Hello world!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Is It Time To Go Home Yet?</title>
+	<meta charset="utf-8" />
+
+    <script type="text/javascript">
+        function ii5y() {
+            var now = new Date();
+            timeNow = now.toLocaleTimeString();
+            console.log(timeNow);
+            return timeNow;
+        };
+        function startTime() {
+            var now = new Date();
+            timeNow = now.toLocaleTimeString();
+            document.getElementById('clock').innerHTML = timeNow;
+            var t = setTimeout(startTime, 1000);
+            var visible = false;
+
+            if (timeNow.match(/5:00:00 PM$/)) {
+                alert("IT'S TIME TO GO HOME!");
+            }
+
+            if (timeNow.match(/5:00:.. PM$/)) {
+                visible = true;
+                document.getElementById('yay').style.visibility = 'initial';
+                document.getElementById('yay').innerHTML = "IT'S TIME TO GO HOME!";
+                console.log("winner");
+                
+            }
+            else {
+                //document.getElementById('yay').style.visibility = 'hidden';
+                document.getElementById('yay').innerHTML = "IT'S NOT TIME TO GO HOME YET!";
+
+            }
+        };
+    </script>
+</head>
+<body onload="startTime()">
+    <!--<script>document.write(ii5y());</script>-->
+    <div id="clock"></div>
+    <div id="yay"></div>
+</body>
+</html>
