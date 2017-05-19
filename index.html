@@ -4,6 +4,9 @@
     <title>Is It Time To Go Home Yet?</title>
 	<meta charset="utf-8" />
 	<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAK5GrAEWxzAB11/AAlOn/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACIgAAAAAAAAIzIiAAAAAAACMzMiIAAAAAEyIzMyIgAAIzEjMzITIgAiIzMzMzMyACRCIjIjMzIAAkREIhMyIgAAJEREQiESAAACRERERCIAAAAkREREQgAAAAJEREQgAAAAACREIgAAAAAAAiIAAAAAAAAAAAAAD//wAAj/8AAIH/AADAPwAAwAcAAIABAACAAQAAgAEAAMABAADgAQAA8AEAAPgBAAD8AwAA/gcAAP8fAAD//wAA" rel="icon" type="image/x-icon" />
+
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+
     <script type="text/javascript">
         function ii5y() {
             var now = new Date();
@@ -24,14 +27,14 @@
 
             if (timeNow.match(/5:00:.. PM$/)) {
                 visible = true;
-                document.getElementById('yay').style.visibility = 'initial';
-                document.getElementById('yay').innerHTML = "IT'S TIME TO GO HOME!";
+                document.getElementById('message').style.visibility = 'initial';
+                document.getElementById('message').innerHTML = "IT'S TIME TO GO HOME!";
                 console.log("winner");
                 
             }
             else {
-                //document.getElementById('yay').style.visibility = 'hidden';
-                document.getElementById('yay').innerHTML = "IT'S NOT TIME TO GO HOME YET!";
+                //document.getElementById('message').style.visibility = 'hidden';
+                document.getElementById('message').innerHTML = "IT'S NOT TIME TO GO HOME YET!";
 
             }
         };
@@ -40,6 +43,6 @@
 <body onload="startTime()">
     <!--<script>document.write(ii5y());</script>-->
     <div id="clock"></div>
-    <div id="yay"></div>
+    <div id="message"></div>
 </body>
 </html>
