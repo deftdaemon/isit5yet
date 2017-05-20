@@ -3,46 +3,17 @@
 <head>
     <title>Is It Time To Go Home Yet?</title>
 	<meta charset="utf-8" />
-	<link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAK5GrAEWxzAB11/AAlOn/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACIgAAAAAAAAIzIiAAAAAAACMzMiIAAAAAEyIzMyIgAAIzEjMzITIgAiIzMzMzMyACRCIjIjMzIAAkREIhMyIgAAJEREQiESAAACRERERCIAAAAkREREQgAAAAJEREQgAAAAACREIgAAAAAAAiIAAAAAAAAAAAAAD//wAAj/8AAIH/AADAPwAAwAcAAIABAACAAQAAgAEAAMABAADgAQAA8AEAAPgBAAD8AwAA/gcAAP8fAAD//wAA" rel="icon" type="image/x-icon" />
-
+	
+    <link href="img/favicon.ico" rel="icon" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 
-    <script type="text/javascript">
-        function ii5y() {
-            var now = new Date();
-            timeNow = now.toLocaleTimeString();
-            console.log(timeNow);
-            return timeNow;
-        };
-        function startTime() {
-            var now = new Date();
-            timeNow = now.toLocaleTimeString();
-            document.getElementById('clock').innerHTML = timeNow;
-            var t = setTimeout(startTime, 1000);
-            var visible = false;
+    <script type="text/javascript" src="js/js.js"></script>
 
-            if (timeNow.match(/5:00:00 PM$/)) {
-                alert("IT'S TIME TO GO HOME!");
-            }
-
-            if (timeNow.match(/5:00:.. PM$/)) {
-                visible = true;
-                document.getElementById('message').style.visibility = 'initial';
-                document.getElementById('message').innerHTML = "IT'S TIME TO GO HOME!";
-                console.log("winner");
-                
-            }
-            else {
-                //document.getElementById('message').style.visibility = 'hidden';
-                document.getElementById('message').innerHTML = "IT'S NOT TIME TO GO HOME YET!";
-
-            }
-        };
-    </script>
 </head>
 <body onload="startTime()">
-    <!--<script>document.write(ii5y());</script>-->
-    <div id="clock"></div>
-    <div id="message"></div>
+    <div class="container">
+        <div class="container-item" id="clock"></div>
+        <div class="container-item" id="message"><p>IT'S NOT TIME TO GO HOME YET!</div>
+    </div>
 </body>
 </html>
