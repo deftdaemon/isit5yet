@@ -10,7 +10,7 @@ endTime.setHours(17, 0, 0, 0); //set endtime to 5:00 PM today
 function getCurrentTime() {
     var now = new Date();
     timeNow = now.toLocaleTimeString();
-    console.log("getCurrentTime: " + timeNow);
+    //console.log("getCurrentTime: " + timeNow);
     return timeNow;
 };
 
