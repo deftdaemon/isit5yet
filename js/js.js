@@ -55,11 +55,16 @@ function initializeCountdown(id, endtime){
     function updateCountdown(){
         var t = getTimeRemaining(endtime);
             countdownTimer.innerHTML = t.hours + ':' + ('0' + t.minutes).slice(-2) + ':' + ('0' + t.seconds).slice(-2); //add leading zeros to minutes and seconds
-            if (t.total <= 0) {
+            if (t.total == 0) {
                 clearInterval(timeInterval);
                 countdownMessage.innerHTML = "YOU MADE IT!";
                 message.innerHTML = msgTimeToGo;
                 alert(msgTimeToGo);
+            }
+            else if (t.total < 0) {
+                clearInterval(timeInterval)
+                countdownMessage.innerHTML = "YOU MADE IT!";
+                message.innerHTML = msgTimeToGo;
             }
             else{
                 //message.innerHTML = msgNotTimeToGo;
@@ -75,6 +80,7 @@ function isit5yet(){
     initializeClock('clock');
     initializeCountdown('countdown', endTime);
 };
+
 
 /*--- OLD VERSION ---*/
 /*
