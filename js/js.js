@@ -1,6 +1,6 @@
 //message strings
-var msgTimeToGo = "IT'S TIME TO GO HOME!";
-var msgNotTimeToGo = "IT'S NOT TIME TO GO HOME YET!";
+var msgTimeToGo = "It's time to go home! " + "&#x1F603";
+var msgNotTimeToGo = "Unfortunately, it's not time to go home yet " + "&#x1F641";
 
 var endTime = new Date(); //today's date
 endTime.setHours(17, 0, 0, 0); //set endTime to 5:00 PM today
