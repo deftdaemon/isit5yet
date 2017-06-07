@@ -80,3 +80,9 @@ function isit5yet(){
     initializeClock('clock');
     initializeCountdown('countdown', endTime);
 };
+
+/*--- Play an audio file ---*/
+function playAudio() {
+    var audio = document.getElementById("audio");
+    audio.play();
+}
