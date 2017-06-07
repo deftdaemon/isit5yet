@@ -3,8 +3,13 @@ var msgTimeToGo = "IT'S TIME TO GO HOME!";
 var msgNotTimeToGo = "IT'S NOT TIME TO GO HOME YET!";
 
 var endTime = new Date(); //today's date
-endTime.setHours(17, 0, 0, 0); //set endtime to 5:00 PM today
+endTime.setHours(17, 0, 0, 0); //set endTime to 5:00 PM today
 
+/*--- Run this on load ---*/
+function isit5yet() {
+    initializeClock('clock');
+    initializeCountdown('countdown', endTime);
+};
 
 /*--- Gets the current time and returns a string of the current time (in users locale) ---*/
 function getCurrentTime() {
@@ -33,6 +38,7 @@ function getTimeRemaining(endTime) {
 };
 
 /*--- Create the clock ---*/
+/*--- Takes an html element id and creates a clock in that element ---*/
 function initializeClock(id){
     var clock = document.getElementById(id);
 
@@ -52,19 +58,24 @@ function initializeCountdown(id, endtime){
     var countdownMessage = document.getElementById('countdown-message');
     message.innerHTML = msgNotTimeToGo;
 
+    //updates the countdown timer
     function updateCountdown(){
         var t = getTimeRemaining(endtime);
-            countdownTimer.innerHTML = t.hours + ':' + ('0' + t.minutes).slice(-2) + ':' + ('0' + t.seconds).slice(-2); //add leading zeros to minutes and seconds
+        countdownTimer.innerHTML = t.hours + ':' + ('0' + t.minutes).slice(-2) + ':' + ('0' + t.seconds).slice(-2); //add leading zeros to minutes and seconds
+            //when time remaining = 0, show alert and play jingle
             if (t.total == 0) {
                 clearInterval(timeInterval);
                 countdownMessage.innerHTML = "YOU MADE IT!";
                 message.innerHTML = msgTimeToGo;
                 alert(msgTimeToGo);
+                playAudio();
             }
+            //after the initial alert above, stop the timer and just leave a message
             else if (t.total < 0) {
                 clearInterval(timeInterval)
                 countdownMessage.innerHTML = "YOU MADE IT!";
                 message.innerHTML = msgTimeToGo;
+                console.log(t.total);
             }
             else{
                 //message.innerHTML = msgNotTimeToGo;
@@ -72,17 +83,12 @@ function initializeCountdown(id, endtime){
     };
 
     updateCountdown(); //run once at first to avoid delay
-    var timeInterval = setInterval(updateCountdown, 1000);
+    var timeInterval = setInterval(updateCountdown, 1000); //run the countdown timer function once every second
 }
-
-/*--- Run this on load ---*/
-function isit5yet(){
-    initializeClock('clock');
-    initializeCountdown('countdown', endTime);
-};
+/*-------------------------------------------------*/
 
 /*--- Play an audio file ---*/
 function playAudio() {
-    var audio = document.getElementById("audio");
+    var audio = new Audio("files/BootyJingle.mp3");
     audio.play();
 }
