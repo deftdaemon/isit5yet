@@ -80,38 +80,3 @@ function isit5yet(){
     initializeClock('clock');
     initializeCountdown('countdown', endTime);
 };
-
-
-/*--- OLD VERSION ---*/
-/*
-function ii5y() {
-     var countdown = document.getElementById('countdown');
-     var now = new Date();
-     timeNow = now.toLocaleTimeString();
-     document.getElementById('clock').innerHTML = timeNow;
-     //var t = setTimeout(ii5y, 1000);
-
-     // Send an alert at 5:00 PM
-     if (timeNow.match(/5:00:00 PM$/)) {
-         alert(msgTimeToGo);
-     }
-
-     // Check if current time matches time from 5:00:00 to 5:00:59 PM
-     if (timeNow.match(/5:00:.. PM$/)) {
-         document.getElementById('message').innerHTML = msgTimeToGo;
-         console.log("time matched");
-     }
-     else {
-         document.getElementById('message').innerHTML = msgNotTimeToGo;
-     }
-
-     var timeLeft = getTimeRemaining(endTime); //create an time remainging object
-    
-     if (timeLeft.total <= 0){
-         clearTimeout(t);
-     }
-
-     countdown.innerHTML = timeLeft.hours + ":" + timeLeft.minutes  +":" + timeLeft.seconds;
-
- };
- */
