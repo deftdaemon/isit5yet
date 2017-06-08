@@ -6,7 +6,7 @@ var endTime = new Date(); //today's date
 endTime.setHours(17, 0, 0, 0); //set endTime to 5:00 PM today
 
 /*--- Run this on load ---*/
-function isit5yet() {
+function iittghy() {
     initializeClock('clock');
     initializeCountdown('countdown', endTime);
 };
@@ -63,7 +63,7 @@ function initializeCountdown(id, endtime){
         var t = getTimeRemaining(endtime);
         countdownTimer.innerHTML = t.hours + ':' + ('0' + t.minutes).slice(-2) + ':' + ('0' + t.seconds).slice(-2); //add leading zeros to minutes and seconds
             //when time remaining = 0, show alert and play jingle
-            if (t.total == 0) {
+            if (t.total === 0) {
                 clearInterval(timeInterval);
                 countdownMessage.innerHTML = "YOU MADE IT!";
                 message.innerHTML = msgTimeToGo;
