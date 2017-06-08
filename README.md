@@ -1,4 +1,4 @@
-# isit5yet
-A simple website that tells you if it's time to go home yet.
+# Is It Time to Go Home Yet?
+A simple website that tells you if it's time to go home yet. Based on user's locale.
 
-For Weston so he can stop asking if it's 5:00.
+Created for Weston so he can stop asking if it's 5:00.
