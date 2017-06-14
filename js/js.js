@@ -1,5 +1,6 @@
 //message strings
 var msgTimeToGo = "It's time to go home! " + "&#x1F603";
+var msgTimeToGoAlert = "It's time to go home! :)";
 var msgNotTimeToGo = "Unfortunately, it's not time to go home yet " + "&#x1F641";
 
 var endTime = new Date(); //today's date
@@ -68,8 +69,8 @@ function initializeCountdown(id, endtime) {
             clearInterval(timeInterval);
             countdownMessage.innerHTML = "YOU MADE IT!";
             message.innerHTML = msgTimeToGo;
-            alert(msgTimeToGo);
-            playAudio();
+            alert(msgTimeToGoAlert);
+            //playAudio(); // play an audio file.
         }
 
         //after the initial alert above, stop the timer and just leave a message
@@ -77,7 +78,7 @@ function initializeCountdown(id, endtime) {
             clearInterval(timeInterval);
             countdownMessage.innerHTML = "YOU MADE IT!";
             message.innerHTML = msgTimeToGo;
-            console.log(t.total);
+            //console.log(t.total);
         }
         else {
             //message.innerHTML = msgNotTimeToGo;
