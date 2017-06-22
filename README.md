@@ -7,7 +7,8 @@ A simple website that tells you if it's time to go home yet. Based on user's loc
 ~~Implement a countdown~~  
 Styling (WIP for mobile-friendliness)  
 Message about Friday to ease pain of working (WIP - better code implementation)  
-Custom end time, set by user (Default of 5:00 PM)  
+Custom end time, set by user (Default of 5:00 PM) 
+Lunch timer, to try to break up the monotony of the day   
 
 #### Credits
 Thanks to Weston for the idea. Created so he can stop asking if it's 5:00 yet.  
