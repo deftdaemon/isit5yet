@@ -41,7 +41,7 @@ function showDayMessage(day) {
             break;
 
         default:
-            console.log("Other day");
+            //console.log("Other day");
             break;
     }
 }
