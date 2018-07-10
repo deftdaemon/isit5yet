@@ -7,7 +7,19 @@ var msgFridayAlt = "But it's Friday, so there's that.";
 
 // Global variables
 var endTime = new Date(); //today's date
+
+//Get the custom end time using a URL parameter
+//See here: https://stackoverflow.com/q/901115
+let params = new URLSearchParams(location.search.slice(1));
+let customEndTime = params.get('t');
+//check if value supplied exists and is a number
+if(customEndTime && !isNaN(customEndTime)){
+    endTime.setHours(customEndTime, 0, 0, 0);
+}
+else {
     endTime.setHours(17, 0, 0, 0); //set endTime to 5:00 PM today
+}
+
 var todayDay = endTime.getDay(); //today's day as a var
 
 var timesUp = false; //a boolean set to whether the countdown is finished or not
