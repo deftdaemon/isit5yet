@@ -3,15 +3,19 @@ var msgTimeToGo = "It's time to go home! " + "&#x1F603";
 var msgTimeToGoAlert = "It's time to go home! :)"; //alert boxes can't handle unicode emojis
 var msgNotTimeToGo = "Unfortunately, it's not time to go home yet " + "&#x1F641";
 var msgFriday = "And it's Friday! Woohoo!";
-var msgFridayAlt = "But it's Friday, so there's that.";
+var msgFridayAlt = "But it's Friday, so that's nice.";
 
 // Global variables
-var endTime = new Date(); //today's date
-    endTime.setHours(17, 0, 0, 0); //set endTime to 5:00 PM today
-var todayDay = endTime.getDay(); //today's day as a var
+
+//Get the custom end time using a URL parameter
+//See here: https://stackoverflow.com/q/901115
+let params = new URLSearchParams(location.search.slice(1));
+let customEndTime = params.get('t');
+
+//set the end time
+var endTime = parseTime(customEndTime);
 
 var timesUp = false; //a boolean set to whether the countdown is finished or not
-
 
 /*--- Run this on load ---*/
 function iittghy() {
@@ -27,10 +31,11 @@ function getCurrentTime() {
 }
 
 /*--- Takes a day value (0-6) and displays a message based on the day ---*/
-function showDayMessage(day) {
+function showDayMessage() {
     var messageDay = document.getElementById("message-day");
 
-    switch (day) {
+    var today = new Date();
+    switch (today.getDay()) {
         case 5:
             if (timesUp){
                 messageDay.innerHTML = msgFriday;
@@ -39,9 +44,7 @@ function showDayMessage(day) {
                 messageDay.innerHTML = msgFridayAlt;
             }            
             break;
-
         default:
-            //console.log("Other day");
             break;
     }
 }
@@ -89,6 +92,7 @@ function initializeCountdown(id, endtime) {
     function updateCountdown() {
         var t = getTimeRemaining(endtime);
         countdownTimer.innerHTML = t.hours + ':' + ('0' + t.minutes).slice(-2) + ':' + ('0' + t.seconds).slice(-2); //add leading zeros to minutes and seconds
+        countdownTimer.setAttribute('title', endTime.toLocaleString());
 
         //when time remaining = 0, show alert and play jingle
         if (t.total === 0) {
@@ -107,7 +111,7 @@ function initializeCountdown(id, endtime) {
             timesUp = false;
         }
 
-        showDayMessage(todayDay); //show extra message about the current day --updates every time function runs, needs to change.
+        showDayMessage(); //show extra message about the current day --updates every time function runs, needs to change.
     }
 
     updateCountdown(); //run once at first to avoid delay
@@ -115,7 +119,7 @@ function initializeCountdown(id, endtime) {
 }
 /*-------------------------------------------------*/
 
-/*--- When countdown finished function ---*/
+/*--- When the countdown is finished ---*/
 function countdownOver(msg, cdmsg) {
     msg.innerHTML = msgTimeToGo;
     cdmsg.innerHTML = "YOU MADE IT!";
@@ -126,4 +130,22 @@ function countdownOver(msg, cdmsg) {
 function playAudio() {
     var audio = new Audio("files/BootyJingle.mp3");
     audio.play();
+}
+
+//parsing based on this stackoverflow answer: https://stackoverflow.com/a/338439
+function parseTime(timeString) {
+    //create new date object
+    var d = new Date(); //new date set to now
+    if (/\d/.test(timeString) == false){
+        d.setHours(17, 0, 0, 0); //set endTime to 5:00 PM today
+        console.log('No time found! Setting end time to 5:00 PM');
+    }
+    else{
+        var time = timeString.match(/(\d+)(:(\d\d))?\s*(p?)/i);
+        d.setHours(parseInt(time[1], 10) + ((parseInt(time[1], 10) < 12 && time[4]) ? 12 : 0));
+        d.setMinutes(parseInt(time[3], 10) || 0);
+        d.setSeconds(0, 0);
+        console.log('The set end time is ' + d.toLocaleString());
+    }
+    return d;
 }
