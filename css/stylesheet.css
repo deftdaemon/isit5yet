@@ -20,22 +20,19 @@ body {
     padding: 20px 40px;
 }
 
-/*.content-item {
-    
-}*/
-
-.main-content p {
+.content-item {
     text-align: center;
+    margin: .5em 0;    
 }
 
-#clock {
+#countdown {
     font-size: 3em;
-    margin: .5em 0;
+    margin: 0;
 }
 
 /*--- Footer styles ---*/
 .footer {
-    padding: 20px 40px;
+    padding: 20px;
 }
 
 .footer p {
